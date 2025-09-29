@@ -19,8 +19,8 @@ class MonteCarlo:
         
         # Scale samples to problem domain
         domain_n = np.tile(self.domain[:,:], (n,1,1))
-        samples = samples + domain_n[:,:,0]
         samples = samples * np.abs(domain_n[:,:,1] - domain_n[:,:,0])
+        samples = samples + domain_n[:,:,0]
         
         # Aggregate results
         return self.aggregate_func(samples)
